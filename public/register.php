@@ -7,13 +7,13 @@
     if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
         // else render form
-        render("register_view.php", ["title" => "Register"]);
+        render("../views/register_view.php", ["title" => "Register"]);
     }
 
     // else if user reached page via POST (as by submitting a form via POST)
     else if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        if((empty($_POST["username"]) || 
+        if((empty($_POST["user_name"]) || 
         empty($_POST["password"]) || 
         empty($_POST["confirmation"])) || 
         ($_POST["password"] !== $_POST["confirmation"]))
@@ -38,7 +38,7 @@
 
             //Execute the query
  
-            $result = mysqli_query("INSERT INTO users (user_name, password, email, is_shelter)
+            $result = mysqli_query($conn,"INSERT INTO users (user_name, password, email, is_shelter)
 				                    VALUES('$name','$password','$email','$is_shelter')");
 
             
@@ -50,10 +50,19 @@
             }
             else
               $msg = "Thanks for signing up for our service!";
-              $rows =  mysqli_query("SELECT LAST_INSERT_ID() AS id");
-              $id = $rows[0]["id"];
-              $_SESSION["id"] = $id;  
-              redirect("index.php");   
+              $rows =  mysqli_query($conn,"SELECT LAST_INSERT_ID() AS id");
+              if (mysqli_num_rows($rows) > 0)
+              {
+                  $row = mysqli_fetch_assoc($rows);
+                  $id = $row["id"];
+                  $_SESSION["id"] = $id; 
+                  apologize($_SESSION["id"]);
+              }
+              else{
+                  apologize(":(");
+              }
+                
+              redirect("../views/register_view.php");   
         }
         
     }
