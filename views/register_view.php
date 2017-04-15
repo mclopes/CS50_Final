@@ -26,5 +26,5 @@
     </fieldset>
 </form>
 <div>
-   or <a href="login.php">log in</a>
+   or <a href="login_view.php">log in</a>
 </div>
