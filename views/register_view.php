@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <form action="register.php" method="post">
+=======
+<form action="../public/register.php" method="post">
+>>>>>>> origin/master
     <fieldset>
         <div class="form-group">
             <input autocomplete="off" autofocus class="form-control" name="user_name" placeholder="Username" type="text"/>
