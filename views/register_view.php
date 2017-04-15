@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <form action="register.php" method="post">
 =======
 <form action="../public/register.php" method="post">
+>>>>>>> origin/master
+=======
+<form action="register_view.php" method="post">
 >>>>>>> origin/master
     <fieldset>
         <div class="form-group">
