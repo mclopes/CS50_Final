@@ -1,4 +1,4 @@
-<form action="../public/register.php" method="post">
+<form action="register_view.php" method="post">
     <fieldset>
         <div class="form-group">
             <input autocomplete="off" autofocus class="form-control" name="user_name" placeholder="Username" type="text"/>
