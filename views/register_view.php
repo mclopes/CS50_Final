@@ -1,4 +1,4 @@
-<form action="register_view.php" method="post">
+<form action="register.php" method="post">
     <fieldset>
         <div class="form-group">
             <input autocomplete="off" autofocus class="form-control" name="user_name" placeholder="Username" type="text"/>
@@ -13,7 +13,7 @@
             <input class="form-control" name="email" placeholder="email" type="email"/>
         </div>
          <div class="form-group">
-            <input class="form-control" name="is_shelter" type="checkbox"id="is_shelter" value= <label for="is_shelter">Are you a shelter?</label>
+            <input class="form-control" name="is_shelter" type="checkbox" id="is_shelter" value= <label for="is_shelter">Are you a shelter?</label>
         </div>
         <div class="form-group">
             <button class="btn btn-default" type="submit">

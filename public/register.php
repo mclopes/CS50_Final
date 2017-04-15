@@ -19,22 +19,38 @@
         ($_POST["password"] !== $_POST["confirmation"]))
         {
           apologize("Please try again.");
-        }else{
+        }
+        else
+        {
+            // create a variable
+            $name=$_POST['user_name'];
+            $password= password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $email=$_POST['email'];
+            $is_shelter;
+            if(isset($_POST['is_shelter']))
+            {
+                $is_shelter = 1;
+            }
+            else
+            {
+                $is_shelter = 0;
+            }
 
-
-	  	    $query = ("INSERT INTO users(user_name, password, email, is_shelter)VALUES($_POST["user_name"], password_hash($POST["password"],PASSWORD_DEFAULT), $POST["email"], 'is_shelter')");
-	    	mysqli_query($sql_link, $query);    
+            //Execute the query
+ 
+            $result = mysqli_query("INSERT INTO users (user_name, password, email, is_shelter)
+				                    VALUES('$name','$password','$email','$is_shelter')");
 
             
 
-            CS50::query("INSERT IGNORE INTO users (username, hash, cash) VALUES(?, ?, 10000.0000)", $_POST["username"], password_hash($_POST["password"], PASSWORD_DEFAULT));
+            //CS50::query("INSERT IGNORE INTO users (username, hash, cash) VALUES(?, ?, 10000.0000)", $_POST["username"], password_hash($_POST["password"], PASSWORD_DEFAULT));
             if($result === false)
             {
               apologize("Couldn't be saved to database");
             }
             else
               $msg = "Thanks for signing up for our service!";
-              $rows =  CS50::query("SELECT LAST_INSERT_ID() AS id");
+              $rows =  mysqli_query("SELECT LAST_INSERT_ID() AS id");
               $id = $rows[0]["id"];
               $_SESSION["id"] = $id;  
               redirect("index.php");   

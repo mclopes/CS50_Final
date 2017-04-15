@@ -10,7 +10,7 @@
      */
 
 $servername = "localhost";
-$username = "php";
+$username = "project";
 $password = "cs50final";
 $dbname = "CS50Final";
 
@@ -29,8 +29,8 @@ if (!$conn) {
     require("functions.php");
 
     // CS50 Library
-    require("../vendor/library50-php-5/CS50/CS50.php");
-    CS50::init(__DIR__ . "/../config.json");
+    //require("../vendor/library50-php-5/CS50/CS50.php");
+    //CS50::init(__DIR__ . "/../config.json");
 
     // enable sessions
     session_start();
