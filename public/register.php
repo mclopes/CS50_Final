@@ -49,7 +49,8 @@
               apologize("Couldn't be saved to database");
             }
             else
-              $msg = "Thanks for signing up for our service!";
+            {
+              //$msg = "Thanks for signing up for our service!";
               $rows =  mysqli_query($conn,"SELECT LAST_INSERT_ID() AS id");
               if (mysqli_num_rows($rows) > 0)
               {
@@ -57,11 +58,12 @@
                   $id = $row["id"];
                   $_SESSION["id"] = $id; 
               }
-              else{
+              else
+              {
                   apologize(":(");
               }
 
-              if ($is_shelter = 1)
+              if ($is_shelter === 1)
               {
                   $capacity = $_POST['capacity'];
                   $availability = $_POST['availability'];
@@ -71,32 +73,51 @@
                   $address_city = $_POST['address_city'];
                   $address_province = $_POST['address_province'];
                   $address_postal_code = $_POST['address_postal_code'];
+
                   
-                  $result2 = mysqli_query($conn,"INSERT INTO shelter (capacity, availability, type, user_id)
+                //   apologize("avilab: ".$availability."type: ".$type."ad num: ".$address_number."street: ".$address_street."city: ".$address_city."province: ".$address_province."CP: ".$address_postal_code."user id: ".$id."capacity: ".$capacity);
+                  
+                  
+                  $result2 = mysqli_query($conn,"INSERT INTO shelters (capacity, availability, type, user_id)
 				                    VALUES('$capacity','$availability','$type','$id')");
-                if($result2 === false)
-                {
-                    apologize("no shelter");
-                 }
-                else
-                {
-                  $rows_shelter =  mysqli_query($conn,"SELECT LAST_INSERT_ID() AS shelter_id");
-                if (mysqli_num_rows($rows_shelter) > 0)
-                {
-                    $row_shelter = mysqli_fetch_assoc($rows_shelter);
-                    $id_shelter = $row_shelter["shelter_id"];
-                   // $_SESSION["shelter_id"] = $id_shelter; 
-                }
+                
+                    if($result2 === false)
+                    {
+                        apologize("no shelter");
+                    }
+                    else
+                    {
+                        $rows_shelter =  mysqli_query($conn,"SELECT LAST_INSERT_ID() AS shelter_id");
+                        if (mysqli_num_rows($rows_shelter) > 0)
+                        {
+                            $row_shelter = mysqli_fetch_assoc($rows_shelter);
+                            $id_shelter = $row_shelter["shelter_id"];
+                        // $_SESSION["shelter_id"] = $id_shelter; 
+                        }
 
-                  $result3 = mysqli_query($conn,"INSERT INTO shelter_address (shelter_id, address_number,address_street, address_city,address_province, address_postal_code)
-				                    VALUES('$id_shelter', $address_number','$address_street','$address_city','$address_province', '$address_postal_code')");   
+                        //Error checkin
+                        // if (!mysqli_query($conn,"INSERT INTO shelter_address (shelter_id, address_number,address_street, address_city, address_province, address_postal_code)
+                        //--                 VALUES('$id_shelter', $address_number','$address_street','$address_city','$address_province', '$address_postal_code')"))
+                        // {
+                        //     echo("Error description: " . mysqli_error($conn));
+                        // }
 
-                  if($result3 === false)
-            {
-              apologize("no address");
-            }                  
-                }               
+                        
+                        $result3 = mysqli_query($conn,"INSERT INTO shelter_address (shelter_id, address_number,address_street, address_city, address_province, address_postal_code)
+                                         VALUES('$id_shelter', $address_number','$address_street','$address_city','$address_province', '$address_postal_code')");   
+
+                    
+                       
+                       
+                        apologize("ad num: ".$address_number." street: ".$address_street." city: ".$address_city." province: ".$address_province." CP: ".$address_postal_code." id shelter: ".$id_shelter);
+                        
+                        if($result3 === false)
+                        {
+                            apologize("no address");
+                        }                  
+                    }               
               }
+            }
                 
               redirect("../views/register_view.php");   
         }
