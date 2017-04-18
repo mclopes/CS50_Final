@@ -7,7 +7,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "GET")
     {
         // else render form
-        render("login_view.php", ["title" => "Log In"]);
+        render("../views/login_view.php", ["title" => "Log In"]);
     }
 
     // else if user reached page via POST (as by submitting a form via POST)
@@ -41,10 +41,10 @@
             {
                 // remember that user's now logged in by storing user's ID in session
                 $_SESSION["id"] = $row["user_id"];
-                apologize("Yes!".$_SESSION["id"]);
+                //apologize("Yes!".$_SESSION["id"]);
 
                 // redirect to index
-                redirect("/");
+                render("../views/post_upload.php");
             }
         }
 

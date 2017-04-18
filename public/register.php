@@ -104,7 +104,7 @@
               }
             }
                 
-              redirect("../views/register_view.php");   
+              render("../views/post_upload.php");   
         }
         
     }

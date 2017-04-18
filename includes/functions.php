@@ -1,15 +1,6 @@
 <?php
 
-    /**
-     * helpers.php
-     *
-     * Computer Science 50
-     * Problem Set 7
-     *
-     * Helper functions.
-     */
-
-    require_once("config.php");
+   require_once("config.php");
 
     /**
      * Apologizes to user with message.
@@ -82,9 +73,9 @@
             extract($values);
 
             // render view (between header and footer)
-      //      require("../views/header.php");
+            require("../views/header.php");
             require("../views/{$view}");
-        //    require("../views/footer.php");
+            require("../views/footer.php");
             exit;
         }
 
