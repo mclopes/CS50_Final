@@ -56,10 +56,46 @@
                   $row = mysqli_fetch_assoc($rows);
                   $id = $row["id"];
                   $_SESSION["id"] = $id; 
-                  apologize($_SESSION["id"]);
               }
               else{
                   apologize(":(");
+              }
+
+              if ($is_shelter = 1)
+              {
+                  $capacity = $_POST['capacity'];
+                  $availability = $_POST['availability'];
+                  $type = $_POST['type']; 
+                  $address_number = $_POST['address_number'];
+                  $address_street = $_POST['address_street'];
+                  $address_city = $_POST['address_city'];
+                  $address_province = $_POST['address_province'];
+                  $address_postal_code = $_POST['address_postal_code'];
+                  
+                  $result2 = mysqli_query($conn,"INSERT INTO shelter (capacity, availability, type, user_id)
+				                    VALUES('$capacity','$availability','$type','$id')");
+                if($result2 === false)
+                {
+                    apologize("no shelter");
+                 }
+                else
+                {
+                  $rows_shelter =  mysqli_query($conn,"SELECT LAST_INSERT_ID() AS shelter_id");
+                if (mysqli_num_rows($rows_shelter) > 0)
+                {
+                    $row_shelter = mysqli_fetch_assoc($rows_shelter);
+                    $id_shelter = $row_shelter["shelter_id"];
+                   // $_SESSION["shelter_id"] = $id_shelter; 
+                }
+
+                  $result3 = mysqli_query($conn,"INSERT INTO shelter_address (shelter_id, address_number,address_street, address_city,address_province, address_postal_code)
+				                    VALUES('$id_shelter', $address_number','$address_street','$address_city','$address_province', '$address_postal_code')");   
+
+                  if($result3 === false)
+            {
+              apologize("no address");
+            }                  
+                }               
               }
                 
               redirect("../views/register_view.php");   
