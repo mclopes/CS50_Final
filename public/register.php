@@ -95,7 +95,13 @@
                         //Executing the query for shelter_address table
                         $result3 = mysqli_query($conn,"INSERT INTO shelter_address (shelter_id, address_number, address_street, address_city, address_province, address_postal_code)
                                         VALUES('$id_shelter', '$address_number','$address_street','$address_city','$address_province', '$address_postal_code')");   
+                       
+                        //Execute query to add address to marker DB
+                        $result4 = mysqli_query($conn, "INSERT INTO markers (address,shelter_id)
+                        VALUES ('$address_number $address_street $address_city  $address_province $address_postal_code','$id_shelter')");
                         
+
+
                         if($result3 === false)
                         {
                             apologize("no address");

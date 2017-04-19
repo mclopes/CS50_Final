@@ -44,7 +44,7 @@
                 //apologize("Yes!".$_SESSION["id"]);
 
                 // redirect to index
-                render("../views/post_upload.php");
+                render("../views/map_view.html");
             }
         }
 
