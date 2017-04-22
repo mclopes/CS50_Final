@@ -7,6 +7,8 @@ require("../public/post_list_public.php");
 ?>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
         <style type="text/css">
             tr.header
             {

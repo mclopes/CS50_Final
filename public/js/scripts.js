@@ -1,6 +1,6 @@
 var map;
-var icon = "img/black-cat.png";
-var json = "public/map_controller.php";
+var icon = "../img/black-cat.png";
+var json = "../public/map_controller.php";
 var currWindow = false;
 
 function initialize() {
