@@ -58,6 +58,9 @@
             </div>
             <div class="form-group">
                 <input autocomplete="off" autofocus class="form-control" name="address_postal_code" placeholder="Postal Code" type="text"/>
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="phone" placeholder="Phone" type="text"/>
             </div>            
         </div>
         <!--End Hidden Div-->

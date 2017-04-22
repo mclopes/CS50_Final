@@ -1,8 +1,9 @@
 var map;
 var icon = "../img/black-cat.png";
 var json = "../public/map_controller.php";
-function initialize() 
-{
+var currWindow = false;
+
+function initialize() {
 
     var mapProp = {
         center: new google.maps.LatLng(25.7776179, -80.1929211), //LLANDRINDOD WELLS
@@ -12,42 +13,68 @@ function initialize()
 
     map = new google.maps.Map(document.getElementById("map"), mapProp);
 
-     $.getJSON(json, function(result) {
- 
-    $.each(result, function (key, data) {
+    $.getJSON(json, function(result) {
 
-        var latLng = new google.maps.LatLng(data.lat, data.long);
-        var infowindow = new google.maps.InfoWindow({
-          content: details
+        $.each(result, function(key, data) {
+
+            var latLng = new google.maps.LatLng(data.lat, data.long);
+            var infowindow = new google.maps.InfoWindow({
+                content: details
+            });
+
+            var marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                icon: {
+                    url: icon,
+                    scaledSize: new google.maps.Size(30, 35)
+                },
+                title: data.title
+            });
+            marker.addListener('click', function() {
+
+                if (currWindow) {
+                    currWindow.close();
+                }
+
+                currWindow = infowindow;
+                //infowindow.open(base.map, marker);
+
+
+                infowindow.open(map, marker);
+            });
+
+            var details = "<div>"
+            details += "Owner Name: " + data.user_name + "<br>";
+            details += "Phone: " + data.phone + "<br>";
+            details += "Type: " + data.type + "<br>";
+            details += "Capacity: " + data.capacity + "<br>";
+            details += "Availability: " + data.availability + "<br>";
+            details += "Address: " + data.address;
+
+            details += "</div>"
+
+            //"<ul>" + "<li>" + data.address + "</li><li>" + data.phone + "</li></ul>";
+
+            bindInfoWindow(marker, map, infowindow, details);
+
         });
-        
-        var marker = new google.maps.Marker({
-            position: latLng,
-            map: map,
-            icon: {url:icon,
-                scaledSize: new google.maps.Size(30,35)
-            },
-            title: data.title
-        });
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-
-        var details = data.address + ", " + data.phone + ".";
-
-        bindInfoWindow(marker, map, infowindow, details);
-
-           });
 
     });
 
 }
 
 function bindInfoWindow(marker, map, infowindow, strDescription) {
-    google.maps.event.addListener(marker, 'click', function () {
+    google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(strDescription);
         infowindow.open(map, marker);
     });
+}
+
+function closeCurrInfoWin() {
+    if (lastOpenedInfoWindow) {
+        lastOpenedInfoWindow.close();
+    }
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

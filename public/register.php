@@ -72,10 +72,11 @@
                   $address_city = $_POST['address_city'];
                   $address_province = $_POST['address_province'];
                   $address_postal_code = $_POST['address_postal_code'];
+                  $phone = $_POST['phone'];
 
                   //Executing query for shelters table
-                  $result2 = mysqli_query($conn,"INSERT INTO shelters (capacity, availability, type, user_id)
-				                    VALUES('$capacity','$availability','$type','$id')");
+                  $result2 = mysqli_query($conn,"INSERT INTO shelters (capacity, availability, type, user_id, phone)
+				                    VALUES('$capacity','$availability','$type','$id', '$phone')");
                 
                     if($result2 === false)
                     {
