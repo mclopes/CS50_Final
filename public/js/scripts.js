@@ -1,7 +1,6 @@
 var map;
 var icon = "../img/black-cat.png";
 var json = "../public/map_controller.php";
-var infowindow = new google.maps.InfoWindow();
 function initialize() 
 {
 
@@ -18,7 +17,10 @@ function initialize()
     $.each(result, function (key, data) {
 
         var latLng = new google.maps.LatLng(data.lat, data.long);
-
+        var infowindow = new google.maps.InfoWindow({
+          content: details
+        });
+        
         var marker = new google.maps.Marker({
             position: latLng,
             map: map,
@@ -27,8 +29,11 @@ function initialize()
             },
             title: data.title
         });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
 
-        var details = data.website + ", " + data.phone + ".";
+        var details = data.address + ", " + data.phone + ".";
 
         bindInfoWindow(marker, map, infowindow, details);
 
