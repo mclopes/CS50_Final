@@ -1,23 +1,83 @@
-// Google Map
 var map;
+var icon = "../img/black-cat.png";
+var json = "../public/map_controller.php";
+var infowindow = new google.maps.InfoWindow();
+function initialize() 
+{
 
-// markers for map
-var markers = [];
-
-function initMap() {
-    var mdc = {
-        lat: 25.7776179,
-        lng: -80.1929211
+    var mapProp = {
+        center: new google.maps.LatLng(25.7776179, -80.1929211), //LLANDRINDOD WELLS
+        zoom: 7,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: mdc
+
+    map = new google.maps.Map(document.getElementById("map"), mapProp);
+
+     $.getJSON(json, function(result) {
+ 
+    $.each(result, function (key, data) {
+
+        var latLng = new google.maps.LatLng(data.lat, data.long);
+
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            icon: {url:icon,
+                scaledSize: new google.maps.Size(30,35)
+            },
+            title: data.title
+        });
+
+        var details = data.website + ", " + data.phone + ".";
+
+        bindInfoWindow(marker, map, infowindow, details);
+
+           });
+
     });
-    var marker = new google.maps.Marker({
-        position: mdc,
-        map: map
+
+}
+
+function bindInfoWindow(marker, map, infowindow, strDescription) {
+    google.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent(strDescription);
+        infowindow.open(map, marker);
     });
 }
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+
+
+
+
+
+
+//------------------------------------
+
+// // Google Map
+// var map;
+
+// // markers for map
+// var markers = [];
+
+// function initMap() {
+//     var mdc = {
+//         lat: 25.7776179,
+//         lng: -80.1929211
+//     };
+//     var map = new google.maps.Map(document.getElementById('map'), {
+//         zoom: 4,
+//         center: mdc
+//     });
+//     var marker = new google.maps.Marker({
+//         position: mdc,
+//         map: map
+//     });
+// }
 
 
 
