@@ -3,7 +3,11 @@
 <html lang="en">
 
 <head>
+    <?php
+// configuration
+include("public/post_list_public.php"); 
 
+?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +20,7 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
+    <link href="css/clean-blog.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -34,23 +38,6 @@
         <script src="public/js/scripts.js"></script>
 </head>
 
-
-
-    <style>
-        #map {
-            height: 400px;
-            width: 100%;
-        }
-        tr.header
-            {
-                font-weight:bold;
-            }
-            tr.alt
-            {
-                background-color: #777777;
-            }
-    </style>
-</head>
 
 <body>
      <!-- Navigation -->
@@ -109,10 +96,61 @@
                 <div class="post-preview">
                     
                         <h2 class="post-title">  Shelters  </h2>
-                          <div id="map" style="border: 2px solid #3872ac;"></div>
+                        <div id="map" style="border: 2px solid #3872ac;"></div>
                 </div>
                
             </div>
+            <script type="text/javascript">
+            $(document).ready(function(){
+               $('.striped tr:even').addClass('alt');
+            });
+        </script>
+            <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-preview">
+                    
+                        <h2 class="post-title">  Animals  </h2>
+                        <table class="striped">
+            <tr class="header">
+                <td>Picture</td>
+                <td>Name</td>
+                <td>City</td>
+                <td>Phone</td>
+                <td>email</td>
+                <td>Type</td>
+                <td>Sex</td>
+                <td>Health</td>
+                <td>Age</td>
+                <td>Date Posted</td>
+                
+            </tr>
+
+
+            <?php
+
+             
+               while ($row = mysqli_fetch_array($result)) {
+                   echo "<tr>";
+                   echo "<td>"."<img src=\"uploads/".$row['picture']."\">"."</td>";
+                   echo "<td>".$row['animal_name']."</td>";
+                   echo "<td>".$row['post_city']."</td>";
+                   echo "<td>".$row['post_phone']."</td>";
+                   echo "<td>".$row['post_email']."</td>";
+                   echo "<td>".$row['animal_type']."</td>";
+                   echo "<td>".$row['animal_sex']."</td>";
+                   echo "<td>".$row['animal_health']."</td>";
+                   echo "<td>".$row['animal_age']."</td>";
+                   echo "<td>".$row['post_date']."</td>";
+                   echo "</tr>";
+               }
+           
+            ?>
+        </table>
+                </div>
+               
+            </div>
+
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
          
        

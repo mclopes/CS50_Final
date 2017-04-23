@@ -1,9 +1,6 @@
 <?php
 // configuration
 require("../public/post_list_public.php"); 
-
-
-
 ?>
 <html>
     <head>
@@ -44,10 +41,9 @@ require("../public/post_list_public.php");
 
             <?php
 
-             $src="/..uploads/";
                while ($row = mysqli_fetch_array($result)) {
                    echo "<tr>";
-                   echo "<td>"."<img src=\"../uploads/".$row['picture']."\">"."</td>";
+                   echo "<td>"."<img src=\"uploads/".$row['picture']."\">"."</td>";
                    echo "<td>".$row['animal_name']."</td>";
                    echo "<td>".$row['post_city']."</td>";
                    echo "<td>".$row['post_phone']."</td>";

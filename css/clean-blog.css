@@ -409,3 +409,11 @@ body {
             height: 400px;
             width: 100%;
         }
+tr.header
+            {
+                font-weight:bold;
+            }
+            tr.alt
+            {
+                background-color: #777777;
+            }
