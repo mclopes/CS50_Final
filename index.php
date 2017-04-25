@@ -126,7 +126,7 @@ include("public/post_list_public.php");
                             while ($row = mysqli_fetch_array($result)) 
                             {
                                 echo "<tr>";
-                                echo "<td>"."<img src=\"uploads/".$row['picture']."\" width='80%' >"."</td>";
+                                echo "<td>"."<img src=\"uploads/".$row['picture']."\" height='30%' >"."</td>";
                                 echo "<td>".$row['animal_name']."</td>";
                                 echo "<td>".$row['post_city']."</td>";
                                 echo "<td>".$row['post_phone']."</td>";
