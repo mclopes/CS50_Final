@@ -111,7 +111,7 @@
               }
             }
                 
-              render("../views/post_upload.php");   
+              redirect("../index.php");   
         }
         
     }

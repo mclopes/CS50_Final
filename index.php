@@ -8,7 +8,7 @@
 include("public/post_list_public.php"); 
 
 ?>
-    <meta charset="utf-8">
+ <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -35,7 +35,7 @@ include("public/post_list_public.php");
     <![endif]-->
    <!-- https://jquery.com/ -->
         <script src="public/js/jquery-1.11.3.min.js"></script>
-        <script src="public/js/scripts.js"></script>
+        <script src="public/js/scripts.js"></script>   
 </head>
 
 
@@ -49,20 +49,20 @@ include("public/post_list_public.php");
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav                        navbar-right">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="views/login_view.php">Login/Register</a>
+
                     </li>
                     <li>
-                        <a href="post.html">Sample Post</a>
+                        <a href="views/post_upload.php">Found An Animal?</a>
                     </li>
                     <li>
                         <a href="contact.html">Contact</a>
