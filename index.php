@@ -91,72 +91,59 @@ include("public/post_list_public.php");
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGPguDR_tDrCsix6uGms1fjDSsfM0nxIQ&callback=initialize">
     </script>
         <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-preview">
-                    
-                        <h2 class="post-title">  Shelters  </h2>
-                        <div id="map" style="border: 2px solid #3872ac;"></div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-preview">
+                        
+                            <h2 class="post-title">  Shelters  </h2>
+                            <div id="map" style="border: 2px solid #3872ac;"></div>
+                    </div>
                 </div>
-               
-            </div>
+            </div>    
             <script type="text/javascript">
             $(document).ready(function(){
                $('.striped tr:even').addClass('alt');
             });
         </script>
-            <div class="row">
+        <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-preview">
-                    
                         <h2 class="post-title">  Animals  </h2>
-                        <table class="striped">
-            <tr class="header">
-                <td>Picture</td>
-                <td>Name</td>
-                <td>City</td>
-                <td>Phone</td>
-                <td>email</td>
-                <td>Type</td>
-                <td>Sex</td>
-                <td>Health</td>
-                <td>Age</td>
-                <td>Date Posted</td>
-                
-            </tr>
-
-
-            <?php
-
-             
-               while ($row = mysqli_fetch_array($result)) {
-                   echo "<tr>";
-                   echo "<td>"."<img src=\"uploads/".$row['picture']."\">"."</td>";
-                   echo "<td>".$row['animal_name']."</td>";
-                   echo "<td>".$row['post_city']."</td>";
-                   echo "<td>".$row['post_phone']."</td>";
-                   echo "<td>".$row['post_email']."</td>";
-                   echo "<td>".$row['animal_type']."</td>";
-                   echo "<td>".$row['animal_sex']."</td>";
-                   echo "<td>".$row['animal_health']."</td>";
-                   echo "<td>".$row['animal_age']."</td>";
-                   echo "<td>".$row['post_date']."</td>";
-                   echo "</tr>";
-               }
-           
-            ?>
-        </table>
-                </div>
-               
+                            <table class="striped">
+                              <tr class="header">
+                                <td>Picture</td>
+                                <td>Name</td>
+                                <td>City</td>
+                                <td>Phone</td>
+                                <td>email</td>
+                                <td>Type</td>
+                                <td>Sex</td>
+                                <td>Health</td>
+                                <td>Age</td>
+                                <td>Date Posted</td>    
+                             </tr>
+                            <?php
+                            while ($row = mysqli_fetch_array($result)) 
+                            {
+                                echo "<tr>";
+                                echo "<td>"."<img src=\"uploads/".$row['picture']."\" width='80%' >"."</td>";
+                                echo "<td>".$row['animal_name']."</td>";
+                                echo "<td>".$row['post_city']."</td>";
+                                echo "<td>".$row['post_phone']."</td>";
+                                echo "<td>".$row['post_email']."</td>";
+                                echo "<td>".$row['animal_type']."</td>";
+                                echo "<td>".$row['animal_sex']."</td>";
+                                echo "<td>".$row['animal_health']."</td>";
+                                echo "<td>".$row['animal_age']."</td>";
+                                echo "<td>".$row['post_date']."</td>";
+                                echo "</tr>";
+                            }        
+                            ?>
+                         </table>
+                </div>         
             </div>
-
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
-         
-       
-     
-    
- 
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
    
 </body>
 
