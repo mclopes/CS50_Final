@@ -67,6 +67,7 @@ error_reporting(E_ALL ^ E_NOTICE);
                         else
                         {
                            echo "<li><a href='views/post_upload.php'>Found An Animal?</a></li>";
+                           echo "<li><a href='views/user_posts.php'>My Posts</a></li>";
                            echo "<li><a href='public/logout.php'>Logout</a></li>";
                         }
                         

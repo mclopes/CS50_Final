@@ -2,12 +2,13 @@
 
 
 include("../views/user_posts.php");
-$post_id = $row['post_id'];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
+if(isset($_POST['deleteItem']) and is_numeric($_POST['deleteItem']))
 {
-   mysqli_query($conn,"DELETE FROM posts WHERE post_id = '$post_id' ");
+    $delete = $_POST['deleteItem'];
+    mysqli_query($conn,"DELETE FROM posts WHERE post_id = '$delete' ");
+    redirect("../views/user_posts.php");
 }
 
-redirect("../views/user_posts.php");
+
 ?>

@@ -37,7 +37,7 @@ include("../public/user_posts_controller.php");
                     <div class='row'><b>email: </b>".$row['post_email']."</div> 
                     <div class='row'><b>Rescue Date: </b>".$row['post_date']."</div> 
                     <form action=\"../public/delete_posts.php\" method=\"post\">
-                     <button class=\"btn btn-default\" type=\"submit\">Delete Post</button>
+                     <button class=\"btn btn-default\" type=\"submit\" name=\"deleteItem\" value=\"".$row['post_id']."\">Delete Post</button>
                      </form>
               </div>
              </div><br>";
