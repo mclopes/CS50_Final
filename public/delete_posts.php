@@ -1,7 +1,7 @@
 <?php
 
 
-include("../views/user_posts.php");
+    require("../includes/config.php"); 
 
 if(isset($_POST['deleteItem']) and is_numeric($_POST['deleteItem']))
 {
