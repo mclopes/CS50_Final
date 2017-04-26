@@ -74,9 +74,7 @@ error_reporting(E_ALL ^ E_NOTICE);
                         ?>
 
 
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -120,11 +118,11 @@ error_reporting(E_ALL ^ E_NOTICE);
         {
 
         
-       echo "<div class='row'>                    
-                <div class='col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-2'>
+       echo "<div class='row'><br>                    
+                <div class='col-lg-4 col-lg-offset-1 col-md-5 col-md-offset-1'>
                     <img src=\"uploads/".$row['picture']."\" height='30%' >
                 </div>
-              <div class=\"col-lg-3 col-lg-offset-0 col-md-5 col-md-offset-1\">
+              <div class=\"col-lg-3 col-lg-offset-1 col-md-5 col-md-offset-1\">
                     <div class='row'><b>Animal Information</b></div><br>
                     <div class='row'><b>Name: </b>".$row['animal_name']."</div>
                     <div class='row'><b>Type: </b>".$row['animal_type']."</div> 

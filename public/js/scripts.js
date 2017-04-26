@@ -3,15 +3,28 @@ var icon = "img/black-cat.png";
 var json = "public/map_controller.php";
 var currWindow = false;
 
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+function showPosition(position) {
+  var lat = position.coords.latitude;
+  var lng = position.coords.longitude;
+  map.setCenter(new google.maps.LatLng(lat, lng));
+}
 function initialize() {
 
     var mapProp = {
         center: new google.maps.LatLng(25.7776179, -80.1929211), //LLANDRINDOD WELLS
-        zoom: 7,
+        zoom: 9,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
     map = new google.maps.Map(document.getElementById("map"), mapProp);
+    
 
     $.getJSON(json, function(result) {
 

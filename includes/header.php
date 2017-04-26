@@ -80,9 +80,7 @@ error_reporting(E_ALL ^ E_NOTICE);
                         }
                         
                         ?>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
+                  
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
