@@ -6,7 +6,7 @@
     <?php
 // configuration
 include("public/post_list_public.php"); 
-
+error_reporting(E_ALL ^ E_NOTICE);
 ?>
  <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,13 +57,22 @@ include("public/post_list_public.php");
                     <li>
                         <a href="index.php">Home</a>
                     </li>
-                    <li>
-                        <a href="views/login_view.php">Login/Register</a>
+                    <?php
 
-                    </li>
-                    <li>
-                        <a href="views/post_upload.php">Found An Animal?</a>
-                    </li>
+                        //this checks to see if the variable isset and not null, if it is not set or is null then echo 'none';
+                        if ($_SESSION["id"] == FALSE)
+                        {
+                            echo "<li><a href='views/login_view.php'>Login/Register</a></li>";
+                        }
+                        else
+                        {
+                           echo "<li><a href='views/post_upload.php'>Found An Animal?</a></li>";
+                           echo "<li><a href='public/logout.php'>Logout</a></li>";
+                        }
+                        
+                        ?>
+
+
                     <li>
                         <a href="contact.html">Contact</a>
                     </li>
@@ -96,6 +105,7 @@ include("public/post_list_public.php");
                     <div class="post-preview">
                         
                             <h2 class="post-title">  Shelters  </h2>
+                            
                             <div id="map" style="border: 2px solid #3872ac;"></div>
                     </div>
                 </div>
@@ -105,46 +115,38 @@ include("public/post_list_public.php");
                $('.striped tr:even').addClass('alt');
             });
         </script>
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-preview">
-                        <h2 class="post-title">  Animals  </h2>
-                            <table class="striped">
-                              <tr class="header">
-                                <td>Picture</td>
-                                <td>Name</td>
-                                <td>City</td>
-                                <td>Phone</td>
-                                <td>email</td>
-                                <td>Type</td>
-                                <td>Sex</td>
-                                <td>Health</td>
-                                <td>Age</td>
-                                <td>Date Posted</td>    
-                             </tr>
-                            <?php
-                            while ($row = mysqli_fetch_array($result)) 
-                            {
-                                echo "<tr>";
-                                echo "<td>"."<img src=\"uploads/".$row['picture']."\" height='30%' >"."</td>";
-                                echo "<td>".$row['animal_name']."</td>";
-                                echo "<td>".$row['post_city']."</td>";
-                                echo "<td>".$row['post_phone']."</td>";
-                                echo "<td>".$row['post_email']."</td>";
-                                echo "<td>".$row['animal_type']."</td>";
-                                echo "<td>".$row['animal_sex']."</td>";
-                                echo "<td>".$row['animal_health']."</td>";
-                                echo "<td>".$row['animal_age']."</td>";
-                                echo "<td>".$row['post_date']."</td>";
-                                echo "</tr>";
-                            }        
-                            ?>
-                         </table>
-                </div>         
-            </div>
-        </div>
+        <?php while ($row = mysqli_fetch_array($result)) 
+        {
+
+        
+       echo "<div class='row'>                    
+                <div class='col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-2'>
+                    <img src=\"uploads/".$row['picture']."\" height='30%' >
+                </div>
+              <div class=\"col-lg-3 col-lg-offset-0 col-md-5 col-md-offset-1\">
+                    <div class='row'><b>Animal Information</b></div><br>
+                    <div class='row'><b>Name: </b>".$row['animal_name']."</div>
+                    <div class='row'><b>Type: </b>".$row['animal_type']."</div> 
+                    <div class='row'><b>Sex: </b>".$row['animal_sex']."</div> 
+                    <div class='row'><b>Health: </b>".$row['animal_health']."</div> 
+                    <div class='row'><b>Age: </b>".$row['animal_age']."</div>
+              </div>
+                    <div class=\"col-lg-3 col-lg-offset-0 col-md-5 col-md-offset-1\">
+                    <div class='row'><b>Contact Information</b></div><br>
+                    <div class='row'><b>City: </b>".$row['post_city']."</div>  
+                    <div class='row'><b>Phone: </b>".$row['post_phone']."</div> 
+                    <div class='row'><b>email: </b>".$row['post_email']."</div> 
+                    <div class='row'><b>Rescue Date: </b>".$row['post_date']."</div> 
+              </div>
+             </div><br>";
+             
+        }  
+
+            ?>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
    
 </body>
 
 </html>
+
+

@@ -1,6 +1,6 @@
 <?php
 
-   require_once("config.php");
+   
 
     /**
      * Apologizes to user with message.
@@ -27,17 +27,24 @@
      */
     function logout()
     {
-        // unset any session variables
-        $_SESSION = [];
+    
 
-        // expire cookie
-        if (!empty($_COOKIE[session_name()]))
-        {
-            setcookie(session_name(), "", time() - 42000);
-        }
+// Unset all of the session variables.
+unset($_SESSION['id']);
 
-        // destroy session
-        session_destroy();
+// If it's desired to kill the session, also delete the session cookie.
+// Note: This will destroy the session, and not just the session data!
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+// Finally, destroy the session.
+session_destroy();
+        
     }
 
     
@@ -132,5 +139,8 @@ function geocode($address){
         return false;
     }
 }
+
+
+
 
 ?>

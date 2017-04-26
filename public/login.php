@@ -42,7 +42,7 @@
                 // remember that user's now logged in by storing user's ID in session
                 $_SESSION["id"] = $row["user_id"];
                 //apologize("Yes!".$_SESSION["id"]);
-
+                
                 // redirect to index
                 redirect("../index.php");
             }

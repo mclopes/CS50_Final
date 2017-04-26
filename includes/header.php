@@ -1,4 +1,9 @@
  <meta charset="utf-8">
+     <?php
+// configuration
+include("../includes/config.php"); 
+error_reporting(E_ALL ^ E_NOTICE);
+?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -60,12 +65,20 @@
                     <li>
                         <a href="../index.php">Home</a>
                     </li>
-                    <li>
-                        <a href="login_view.php">Login/Register</a>
-                    </li>
-                    <li>
-                        <a href="post_upload.php">Found An Animal?</a>
-                    </li>
+                    <?php
+
+                        //this checks to see if the variable isset and not null, if it is not set or is null then echo 'none';
+                        if ($_SESSION["id"] == FALSE)
+                        {
+                            echo "<li><a href='login_view.php'>Login/Register</a></li>";
+                        }
+                        else
+                        {
+                           echo "<li><a href='post_upload.php'>Found An Animal?</a></li>";
+                           echo "<li><a href='../public/logout.php'>Logout</a></li>";
+                        }
+                        
+                        ?>
                     <li>
                         <a href="contact.html">Contact</a>
                     </li>

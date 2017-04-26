@@ -54,13 +54,13 @@
             {
                 $file = NULL;
             }
-            
+            $session = $_SESSION['id'];
 
         //Execute the query
-          mysqli_query($conn,"INSERT INTO posts (post_name, post_city, post_phone, post_email, picture, animal_type, animal_sex, animal_name, animal_health, animal_age, post_date)
-				                    VALUES('$post_name','$post_city','$post_phone','$post_email','$file','$animal_type','$animal_sex','$animal_name','$animal_health','$animal_age','$post_date')");
+          mysqli_query($conn,"INSERT INTO posts (user_id, post_name, post_city, post_phone, post_email, picture, animal_type, animal_sex, animal_name, animal_health, animal_age, post_date)
+				                    VALUES('$session','$post_name','$post_city','$post_phone','$post_email','$file','$animal_type','$animal_sex','$animal_name','$animal_health','$animal_age','$post_date')");
  
-                                    redirect("../index.php");
+                                    redirect("../views/user_posts.php");
         }
     }
 

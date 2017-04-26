@@ -8,7 +8,8 @@
      *
      * Configures app.
      */
-
+ // enable sessions
+session_start();
 $servername = "localhost";
 $username = "project";
 $password = "cs50final";
@@ -27,6 +28,9 @@ if (!$conn) {
 
     // requirements
     require("functions.php");
+
+    
+
 
     // CS50 Library
     //require("../vendor/library50-php-5/CS50/CS50.php");
