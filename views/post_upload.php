@@ -74,8 +74,8 @@ include("../includes/header.php");
                                     <input class="col-md-4 col-lg-4" type="radio" name="type" value="cat">
                                     Cat</div>
                                 <div class="col-md-4 col-lg-3">
-                                    <input class="col-md-4 col-lg-4" type="radio" name="type" value="mixed">
-                                    Mixed
+                                    <input class="col-md-4 col-lg-4" type="radio" name="type" value="other">
+                                    Other
                                 </div><br>
                             </div>
                             <label for="sex">
