@@ -13,7 +13,7 @@ include("../includes/header.php");
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>Karel Bolfill</p>
+                <p>Karel Bofill</p>
                 <p>(786)872-2323</p>
                 <p><a href="mailto:scherzohradec@gmail.com?Subject=Hello" target="_top">scherzohradec@gmail.com</a></p> 
             </div>

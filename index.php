@@ -72,8 +72,11 @@ error_reporting(E_ALL ^ E_NOTICE);
                         }
                         
                         ?>
+                          <li>
+                        <a href="views/search_select.php">Animal Search</a>
+                    </li>
                         <li>
-                        <a href="contact.php">Contact</a>
+                        <a href="views/contact.php">Contact</a>
                     </li>
 
                     

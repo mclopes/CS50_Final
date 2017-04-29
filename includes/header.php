@@ -80,6 +80,9 @@ error_reporting(E_ALL ^ E_NOTICE);
                         }
                         
                         ?>
+                         <li>
+                        <a href="search_select.php">Animal Search</a>
+                    </li>
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
