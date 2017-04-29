@@ -3,8 +3,8 @@
 <head>
 <?php
 // configuration
-//include("../includes/header.php"); 
-//include("../public/search.php"); 
+include("../includes/header.php"); 
+include("../public/search.php"); 
 ?>
 </head>
 

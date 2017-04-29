@@ -7,7 +7,7 @@ include("../includes/header.php");
 ?>
     </head>
 
-<div class="col-lg-6 col-lg-offset-6 col-md-6 col-md-offset-6">
+<div class="col-lg-6 col-lg-offset-4 col-md-6 col-md-offset-6">
                             <form
                             action="../public/search.php"
                             method="post">
@@ -21,7 +21,10 @@ include("../includes/header.php");
                                 <div class="col-md-3 col-lg-3">
                                     <input class="col-md-4 col-lg-4" type="radio" name="type" value="cat">
                                     Cat</div>
-                                <div class="col-md-6 col-lg-4">
+                                    <div class="col-md-3 col-lg-3">
+                                    <input class="col-md-4 col-lg-4" type="radio" name="type" value="other">
+                                    Other</div>
+                                <div class="col-md-3 col-lg-3">
                                 <br>
                             </div>
                             <label for="sex">
@@ -68,7 +71,7 @@ include("../includes/header.php");
                     </form>
                     </div>
 
-
+<br><br><br><br><br><br><br><br><br>
                     
 
 </body>

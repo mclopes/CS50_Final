@@ -72,7 +72,9 @@ error_reporting(E_ALL ^ E_NOTICE);
                         }
                         
                         ?>
-
+                        <li>
+                        <a href="contact.php">Contact</a>
+                    </li>
 
                     
                 </ul>
